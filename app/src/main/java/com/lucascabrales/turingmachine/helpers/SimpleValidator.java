@@ -7,6 +7,9 @@ import java.util.regex.Pattern;
  * Created by lucascabrales on 11/30/17.
  */
 
+/**
+ * Utilizada para validar las entradas de acuerdo a una expresión regular
+ */
 public class SimpleValidator {
     public static final String NOT_EMPTY = "^(?=\\s*\\S).*$";
     public static final String BINARY = "^[01]+$";

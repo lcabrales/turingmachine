@@ -64,7 +64,10 @@ public class ResultsActivity extends AppCompatActivity {
                 break;
         }
 
-        ((TextView) findViewById(R.id.tv_operation)).setText(mTuringMachine.operationSymbol);
+        if (mTuringMachine == null) {
+            mAlertDialog.showWithFinish("Error", "Algo salió mal. Lo sentimos");
+        } else
+            ((TextView) findViewById(R.id.tv_operation)).setText(mTuringMachine.operationSymbol);
     }
 
     /**
@@ -99,6 +102,7 @@ public class ResultsActivity extends AppCompatActivity {
 
     /**
      * Actualiza las vistas para el usuario
+     *
      * @param output modelo de salida para las vistas
      */
     private void updateViews(TuringMachineOutput output) {
@@ -116,6 +120,7 @@ public class ResultsActivity extends AppCompatActivity {
 
     /**
      * Habilita/deshabilita el botón "Next Step"
+     *
      * @param enable true = habilita
      */
     private void toggleNextStepButton(boolean enable) {
@@ -130,6 +135,7 @@ public class ResultsActivity extends AppCompatActivity {
 
     /**
      * Habilita/deshabilita el botón "Fast Step"
+     *
      * @param enable true = habilita
      */
     private void toggleFastStepButton(boolean enable) {

@@ -12,6 +12,9 @@ import com.lucascabrales.turingmachine.R;
  * Created by lucascabrales on 11/30/17.
  */
 
+/**
+ * Muestra un diálogo nativo con un mensaje y un título especificado
+ */
 public class AlertDialogHelper {
 
     private AppCompatActivity mActivity;

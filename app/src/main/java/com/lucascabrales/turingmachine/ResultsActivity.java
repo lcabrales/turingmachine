@@ -57,8 +57,7 @@ public class ResultsActivity extends AppCompatActivity {
                 mTuringMachine = MachinesLibrary.binaryAddition();
                 break;
             case SUBSTRACTION:
-                mAlertDialog.showWithFinish("Información", "Esta función no está disponible");
-//                mTuringMachine = MachinesLibrary.binaryAddition();
+                mTuringMachine = MachinesLibrary.binarySubstraction();
                 break;
             case MULTIPLICATION:
                 mTuringMachine = MachinesLibrary.binaryMultiplication();
@@ -94,7 +93,8 @@ public class ResultsActivity extends AppCompatActivity {
 
             updateViews(output);
         } else
-            mAlertDialog.show("Error", "La entrada no es válida");
+            mAlertDialog.show("Error", "La entrada no es válida. " +
+                    "Solo permite números binarios, y el primer valor debe ser mayor que el segundo.");
     }
 
     /**

@@ -9,69 +9,10 @@ package com.lucascabrales.turingmachine.helpers;
  */
 public final class MachinesLibrary {
 
-    public static TuringMachine equalBinaryWords() {
-        TuringMachine tm = new TuringMachine();
-        tm.addState("q1");
-        tm.addState("q2");
-        tm.addState("q3");
-        tm.addState("q4");
-        tm.addState("q5");
-        tm.addState("q6");
-        tm.addState("q7");
-        tm.addState("q8");
-        tm.addState("qa");
-        tm.addState("qr");
-
-        tm.setInitialState("q1");
-        tm.setFinalState("qa");
-        tm.setRejectState("qr");
-
-        tm.addTransition("q1", '1', "q3", 'x', true);
-        tm.addTransition("q1", '0', "q2", 'x', true);
-        tm.addTransition("q1", '#', "q8", '#', true);
-        tm.addTransition("q2", '0', "q2", '0', true);
-        tm.addTransition("q2", '1', "q2", '1', true);
-        tm.addTransition("q2", '#', "q4", '#', true);
-        tm.addTransition("q3", '0', "q3", '0', true);
-        tm.addTransition("q3", '1', "q3", '1', true);
-        tm.addTransition("q3", '#', "q5", '#', true);
-        tm.addTransition("q4", 'x', "q4", 'x', true);
-        tm.addTransition("q4", '0', "q6", 'x', false);
-        tm.addTransition("q5", 'x', "q5", 'x', true);
-        tm.addTransition("q5", '1', "q6", 'x', false);
-        tm.addTransition("q6", '0', "q6", '0', false);
-        tm.addTransition("q6", '1', "q6", '1', false);
-        tm.addTransition("q6", 'x', "q6", 'x', false);
-        tm.addTransition("q6", '#', "q7", '#', false);
-        tm.addTransition("q7", '0', "q7", '0', false);
-        tm.addTransition("q7", '1', "q7", '1', false);
-        tm.addTransition("q7", 'x', "q1", 'x', true);
-        tm.addTransition("q8", 'x', "q8", 'x', true);
-        tm.addTransition("q8", '_', "qa", '_', true);
-
-        return tm;
-    }
-
-    public static TuringMachine holaInverse() {
-        TuringMachine tm = new TuringMachine();
-
-        tm.addState("q0");
-        tm.addState("q1");
-        tm.addState("q2");
-        tm.addState("q3");
-        tm.addState("q4");
-
-        tm.setInitialState("q0");
-        tm.setFinalState("q4");
-
-        tm.addTransition("q0", 'h', "q1", 'a', true);
-        tm.addTransition("q1", 'o', "q2", 'l', true);
-        tm.addTransition("q2", 'l', "q3", 'o', true);
-        tm.addTransition("q3", 'a', "q4", 'h', true);
-
-        return tm;
-    }
-
+    /**
+     * Definición de la Máquina de Turing de suma binaria
+     * @return objeto de la Máquina de Turing
+     */
     public static TuringMachine binaryAddition() {
         TuringMachine tm = new TuringMachine();
 
@@ -168,6 +109,144 @@ public final class MachinesLibrary {
         return tm;
     }
 
+    /**
+     * Definición de la Máquina de Turing de resta binaria
+     * @return objeto de la Máquina de Turing
+     */
+    public static TuringMachine binarySubstraction() {
+        TuringMachine tm = new TuringMachine();
+
+        tm.name = "Resta Binaria";
+        tm.operationSymbol = "-";
+
+        tm.addState("q0");
+        tm.addState("q1");
+        tm.addState("q2");
+        tm.addState("q3");
+        tm.addState("q4");
+        tm.addState("q5");
+        tm.addState("q6");
+        tm.addState("q7");
+        tm.addState("q8");
+        tm.addState("q9");
+        tm.addState("q10");
+        tm.addState("q11");
+        tm.addState("q12");
+        tm.addState("q13");
+        tm.addState("q14");
+        tm.addState("q15");
+        tm.addState("q16");
+        tm.addState("q17");
+
+        tm.setInitialState("q0");
+        tm.setFinalState("q12");
+
+        //Q0
+        tm.addTransition("q0", '0', "q0", '0', true);
+        tm.addTransition("q0", '1', "q0", '1', true);
+        tm.addTransition("q0", '-', "q14", '-', true);
+
+        //Q1
+        tm.addTransition("q1", '0', "q2", '_', false);
+        tm.addTransition("q1", '1', "q3", '_', false);
+        tm.addTransition("q1", '-', "q5", '-', false);
+
+        //Q2
+        tm.addTransition("q2", 'y', "q2", 'y', false);
+        tm.addTransition("q2", 'x', "q2", 'x', false);
+        tm.addTransition("q2", '0', "q2", '0', false);
+        tm.addTransition("q2", '1', "q2", '1', false);
+        tm.addTransition("q2", '-', "q6", '-', false);
+
+        //Q3
+        tm.addTransition("q3", 'y', "q3", 'y', false);
+        tm.addTransition("q3", 'x', "q3", 'x', false);
+        tm.addTransition("q3", '0', "q3", '0', false);
+        tm.addTransition("q3", '1', "q3", '1', false);
+        tm.addTransition("q3", '-', "q4", '-', false);
+
+        //Q4
+        tm.addTransition("q4", 'y', "q4", 'y', false);
+        tm.addTransition("q4", 'x', "q4", 'x', false);
+        tm.addTransition("q4", '1', "q7", 'x', false);
+        tm.addTransition("q4", '_', "q8", 'y', true);
+        tm.addTransition("q4", '0', "q8", 'y', true);
+
+        //Q5
+        tm.addTransition("q5", 'y', "q5", '1', false);
+        tm.addTransition("q5", 'x', "q5", '0', false);
+        tm.addTransition("q5", '1', "q10", '1', true);
+        tm.addTransition("q5", '0', "q10", '0', true);
+
+        //Q6
+        tm.addTransition("q6", 'y', "q6", 'y', false);
+        tm.addTransition("q6", 'x', "q6", 'x', false);
+        tm.addTransition("q6", '_', "q8", 'x', true);
+        tm.addTransition("q6", '0', "q8", 'x', true);
+        tm.addTransition("q6", '1', "q8", 'y', true);
+
+        //Q7
+        tm.addTransition("q7", '1', "q7", '0', false);
+        tm.addTransition("q7", '_', "q8", '1', true);
+        tm.addTransition("q7", '0', "q8", '1', true);
+
+        //Q8
+        tm.addTransition("q8", 'y', "q8", 'y', true);
+        tm.addTransition("q8", 'x', "q8", 'x', true);
+        tm.addTransition("q8", '0', "q8", '0', true);
+        tm.addTransition("q8", '1', "q8", '1', true);
+        tm.addTransition("q8", '-', "q9", '-', true);
+
+        //Q9
+        tm.addTransition("q9", 'y', "q9", 'y', true);
+        tm.addTransition("q9", 'x', "q9", 'x', true);
+        tm.addTransition("q9", '0', "q9", '0', true);
+        tm.addTransition("q9", '1', "q9", '1', true);
+        tm.addTransition("q9", '_', "q1", '_', false);
+
+        //Q9
+        tm.addTransition("q10", 'y', "q10", 'y', true);
+        tm.addTransition("q10", 'x', "q10", 'x', true);
+        tm.addTransition("q10", '0', "q10", '0', true);
+        tm.addTransition("q10", '1', "q10", '1', true);
+        tm.addTransition("q10", '-', "q11", '_', false);
+
+        //Q11
+        tm.addTransition("q11", '0', "q11", '0', false);
+        tm.addTransition("q11", '1', "q11", '1', false);
+        tm.addTransition("q11", '_', "q17", '_', true);
+
+        //Q13
+        tm.addTransition("q13", '0', "q13", '0', true);
+        tm.addTransition("q13", '1', "q13", '1', true);
+        tm.addTransition("q13", '_', "q1", '_', false);
+
+        //Q14
+        tm.addTransition("q14", '1', "q14", '1', true);
+        tm.addTransition("q14", '0', "q14", '0', true);
+        tm.addTransition("q14", '_', "q15", '_', false);
+
+        //Q15
+        tm.addTransition("q15", '0', "q15", '0', false);
+        tm.addTransition("q15", '1', "q16", '1', false);
+
+        //Q16
+        tm.addTransition("q16", '1', "q16", '0', false);
+        tm.addTransition("q16", '0', "q16", '1', false);
+        tm.addTransition("q16", '-', "q13", '-', true);
+
+        //Q17
+        tm.addTransition("q17", '0', "q17", '_', false);
+        tm.addTransition("q17", '1', "q17", '_', false);
+        tm.addTransition("q17", '_', "q12", '_', true);
+
+        return tm;
+    }
+
+    /**
+     * Definición de la Máquina de Turing de multiplicación binaria
+     * @return objeto de la Máquina de Turing
+     */
     public static TuringMachine binaryMultiplication() {
         TuringMachine tm = new TuringMachine();
 
